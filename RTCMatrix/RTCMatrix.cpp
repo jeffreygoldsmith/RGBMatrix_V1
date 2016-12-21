@@ -140,7 +140,7 @@ void Display::DisplayTime()
   bitTime(tm.mon, bitLength[5], row[5]);
   bitTime(tm.d, bitLength[4], row[4]);
   bitTime(tm.wd, bitLength[3], row[3]);
-  tm.h == 12 ? bitTime(12, bitLength[2], row[2]) : bitTime(tm.h % 12, bitLength[2], row[2]);
+  tm.h % 12 == 0 ? bitTime(12, bitLength[2], row[2]) : bitTime(tm.h % 12, bitLength[2], row[2]);
   bitTime(tm.m, bitLength[1], row[1]);
   bitTime(tm.s, bitLength[0], row[0]);
 
@@ -148,8 +148,8 @@ void Display::DisplayTime()
   {
     for (byte i = 0; i < ROW_OFFSET; i++) // Set APM row to Green
       matrix.setPixelColor(ROW_OFFSET * APM_ROW - i - 1, 0, COLOUR, 0);
-  } 
-  else 
+  }
+  else
   { // If not AM assume PM
     for (byte i = 0; i < ROW_OFFSET; i++) // Set APM row to Blue
       matrix.setPixelColor(ROW_OFFSET * APM_ROW - i - 1, 0, 0, COLOUR);
@@ -163,8 +163,8 @@ void Display::DisplayTime()
       isDay = false;
       isNight = true;
     }
-  } 
-  else 
+  }
+  else
   { // If not assume time is between 8AM and 8PM
     if (isNight == true)
     {
