@@ -4,7 +4,7 @@
 #include "Arduino.h"
 
 
-struct tm
+struct date
 {
   int y;    // Year
   int mon;  // Month

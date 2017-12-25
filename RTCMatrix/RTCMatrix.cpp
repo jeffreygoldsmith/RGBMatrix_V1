@@ -9,7 +9,7 @@
 #include "RTClib.h"
 
 
-struct tm tm;
+date tm;
 
 static const byte DIN_PIN = 6;             // Data in pin
 static const byte LED_NUM = 64;            // Number of LEDs on RGB matrix
@@ -48,10 +48,10 @@ void bitTime(int t, byte tLength, byte row)
 //
 // Function to take time_t variable and decode into individual measurements of time.
 //
-struct tm Decode(time_t ts)
+date Decode(time_t ts)
 {
   int d, m, y;
-  struct tm tm;
+  date tm;
 
   tm.s = ts % 60; // Seconds
   ts /= 60;
